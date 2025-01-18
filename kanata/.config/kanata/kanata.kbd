@@ -6,14 +6,13 @@ caps a    s    d    f    g    h    j    k    l    ;    '    ret
 lsft z    x    c    v    b    n    m    ,    .    /    rsft
 lctl lmet lalt           spc            ralt rmet rctl
 )
-typing something bithhh
 (defcfg
-  process-unmapped-keys yes
-)
+ process-unmapped-keys yes
+  )
 ;; Define custom alias'
 (defalias
   ;; caps as escape
-  cec (tap-hold 250 250 esc lctl)
+  cec (tap-hold 300 300 esc lctl)
   ;; rmenu as caps on tap 
   ;; rmcp (tap-hold 200 200 caps menu)
 )
