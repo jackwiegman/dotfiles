@@ -256,6 +256,7 @@ bindsym $mod+r mode "resize"
 #         }
 # }
 
+# Catppuccin Colors
 set $rosewater #f5e0dc
 set $flamingo #f2cdcd
 set $pink #f5c2e7
