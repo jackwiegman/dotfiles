@@ -4,3 +4,6 @@
 [submodule "/home/jack/dotfiles/nvim/.config/nvim"]
 	path = /home/jack/dotfiles/nvim/.config/nvim
 	url = https://github.com/jackwiegman/nvim
+[submodule "private"]
+	path = private
+	url = https://github.com/jackwiegman/dotfiles-private
