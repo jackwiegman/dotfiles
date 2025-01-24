@@ -19,12 +19,14 @@ exec --no-startup-id xrandr --output $mon1 --primary
 exec_always --no-startup-id xrandr --output $mon1 --mode 3840x2160 --rate 119.99 --pos 0x0
 exec_always --no-startup-id xrandr --output $mon2 --mode 1920x1080 --rate 74.97 --pos 3840x720
 
+
 # Window Gaps
 gaps inner 5px
 gaps outer 1px
 workspace 1 gaps inner 2px
 workspace 1 gaps outer 1px
 smart_borders on
+
 ###########################
 # FONTS
 ###########################
