@@ -21,10 +21,11 @@ exec_always --no-startup-id xrandr --output $mon2 --mode 1920x1080 --rate 74.97 
 
 
 # Window Gaps
-gaps inner 5px
-gaps outer 1px
-workspace 1 gaps inner 2px
-workspace 1 gaps outer 1px
+gaps inner 25px
+gaps outer 10px
+gaps top 0px
+workspace 1 gaps inner 5px
+workspace 1 gaps outer 2px
 smart_borders on
 
 ###########################
