@@ -92,7 +92,7 @@ exec_always nitrogen --restore
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 
-assign [class="firefox"] 4
+# assign [class="firefox"] 4
 
 ###########################
 # SYSTEM KEYBINDS
