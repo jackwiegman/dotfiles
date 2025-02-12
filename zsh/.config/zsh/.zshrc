@@ -36,6 +36,9 @@ bindkey -v
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
 
+# Aliases
+
+source $ZDOTDIR/alias
 # ADD PATH VARIABLES
 path=(~/.local/bin $path)
 
@@ -87,6 +90,5 @@ LS_COLORS='rs=0:di=01;38;2;189;147;249:ln=01;38;2;139;233;253:mh=00:pi=48;2;33;3
 export LS_COLORS
 # CALL ALIASES
 alias ls='ls --color=auto'
-source $ZDOTDIR/alias
 
 
