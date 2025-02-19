@@ -40,8 +40,8 @@ bindkey -v
 
 source $ZDOTDIR/alias
 # ADD PATH VARIABLES
-path=(~/.local/bin $path)
-
+# path=(~/.local/bin $path)
+path=(/usr/bin/node $path)
 # Plugin Mangager
 ##? Clone a plugin, identify its init file, source it, and add it to your fpath.
 function plugin-load {
