@@ -200,6 +200,7 @@ return {
                         fallbackFlags = { fallback },
                     },
                 },
+                cssls = {},
                 -- gopls = {},
                 pyright = {},
                 -- rust_analyzer = {},
