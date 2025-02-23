@@ -38,7 +38,7 @@ bindkey -v
 
 # Aliases
 
-source $ZDOTDIR/alias
+source $ZDOTDIR/aliases.zsh
 # ADD PATH VARIABLES
 # path=(~/.local/bin $path)
 path=(/usr/bin/node $path)
