@@ -27,22 +27,24 @@ set $menu wmenu-run
 output * bg ~/Pictures/wallpapers/walls-catppuccin-mocha/japan-alley.png fill
 #
 output DP-4 {
-	mode 3840x2160@119.997Hz
-	pos 0 0
+    mode 3840x2160@119.997Hz
+    pos 0 0
 }
 
 output HDMI-A-2 {
-	pos 3840 800 
-	mode 1920x1080@74.997Hz 
+    pos 3840 800 
+    mode 1920x1080@74.997Hz 
 }
 
 input "type:keyboard" {
-	# xkb_file ~/.config/xkb/
-	#"key <CAPS> { type = "CAPSLOCK"; type[Shift] = "Escape"; type[Release] = "Control"; }";"
-	xkb_options caps:escape
-	repeat_delay 250
-	repeat_rate 45
+    # xkb_file ~/.config/xkb/
+    # "key <CAPS> { type = "CAPSLOCK"; type[Shift] = "Escape"; type[Release] = "Control"; }";"
+    xkb_options caps:escape
+    repeat_delay 350
+    repeat_rate 70
 }
+
+
 
 ## WINDOW GAPS
 gaps inner 25px
@@ -57,10 +59,11 @@ gaps top 0px
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 600 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         timeout 1000 'swaylock -f -i ~/Pictures/wallpapers/walls-catppuccin-mocha/japan-alley.png' \
+         timeout 1500 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
 
+         #timeout 1000 'swaylock -f -c 000000' \
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
