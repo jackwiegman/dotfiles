@@ -91,4 +91,15 @@ export LS_COLORS
 # CALL ALIASES
 alias ls='ls --color=auto'
 
-
+# YAZI alias function to change directory on 'q', quit without moving with 'Q'
+# Call with function name 'yz'
+#
+#
+function yz() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
