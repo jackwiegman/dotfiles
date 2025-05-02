@@ -211,4 +211,13 @@ alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
 
 
-
+####################
+# Aliases for kb app
+####################
+alias kbl='kb list'
+alias kbe='kb edit'
+alias kba='kb add'
+alias kbv='kb view'
+alias kbd='kb delete --id'
+alias kbg='kb grep'
+alias kbt='kb list --tags'
