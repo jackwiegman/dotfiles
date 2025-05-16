@@ -1,0 +1,32 @@
+{
+
+    // add quotes around props <as-needed*|consistent|preserve>
+    // "quoteProps": as-needed
+
+    // Add trailing comma <all*|es5|none>
+    "trailingComma": es5,
+
+    "tabWidth": 4,
+
+    // Add semi colon at end of every statement <true*|false>
+    // "semi": false,
+
+    "printWidth": 99,
+
+    // Wrap md text, <always|never|preserve*>
+    // always: force all prose blocks to wrap to print width
+    // never: force all prose blocks to one line and rely on editor soft wrap
+    // "proseWrap": always,
+    overrides: [
+        {
+            "files": ".prettierrc",
+            "options": {
+                "parser": "json"
+            },
+            "files": ".json5",
+            "options": {
+                "parser": "json",
+            }
+        },
+    ],
+}

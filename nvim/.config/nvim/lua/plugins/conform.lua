@@ -7,7 +7,10 @@ return {
             {
                 '<leader>f',
                 function()
-                    require('conform').format { async = true, lsp_format = 'fallback' }
+                    require('conform').format({
+                        async = true,
+                        lsp_format = 'fallback',
+                    })
                 end,
                 mode = '',
                 desc = '[F]ormat buffer',
@@ -33,15 +36,17 @@ return {
             end,
             formatters_by_ft = {
                 lua = { 'stylua' },
-                html = { 'prettierd', 'prettier' },
-                css = { 'prettierd', 'prettier' },
-                javascript = { 'prettierd', 'prettier' },
+                html = { 'prettier', 'prettierd', stop_after_first = true },
+                css = { 'prettier', 'prettierd', stop_after_first = true },
+                javascript = { 'prettier', 'prettierd', stop_after_first = true },
                 c = { 'clang-format' },
                 cpp = { 'clang-format' },
                 java = { 'clang-format' },
-                json = { 'prettierd', 'prettier' },
+                json = { 'prettier', 'prettierd', stop_after_first = true },
+                json5 = { 'prettier', 'prettierd', stop_after_first = true },
+
                 python = { 'black' },
-                markdown = { 'markdownlint-cli2', 'markdownlint-cli2' },
+                markdown = { 'prettierd', 'prettier', stop_after_first = true },
                 -- Conform can also run multiple formatters sequentially
                 -- python = { "isort", "black" },
                 --
@@ -51,4 +56,4 @@ return {
         },
     },
 }
--- vim: ts=4 sts=4 sw=4 et
+-- vim: tw=99 ts=4 sts=4 sw=4 et

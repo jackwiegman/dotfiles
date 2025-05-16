@@ -17,7 +17,9 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 
-alias ls='ls --color=auto'
+# alias ls='lsd --color=auto'
+alias ls='lsd'
+# alias ls='ls --color=auto'
 alias l='ls -lah'
 alias la='ls -lAh'
 alias ll='ls -lh'
@@ -30,6 +32,9 @@ alias rd=rmdir
 alias _=sudo
 
 alias hist='fc -l 1'
+
+## Reflector mirror optimization update.
+alias update-mirrors="sudo reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
 
 # alias '\-'='cd -'
 # alias afind='ack -il'

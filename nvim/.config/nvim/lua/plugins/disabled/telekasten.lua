@@ -1,6 +1,7 @@
 return {
     {
         'renerocksai/telekasten.nvim',
+        enable = false,
         dependencies = {
             'nvim-telescope/telescope.nvim',
             'nvim-telekasten/calendar-vim',

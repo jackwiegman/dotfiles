@@ -1,0 +1,33 @@
+{
+    experimentalTernaries: true,
+    experimentalOperatorPosition: "start",
+
+    semi: true,
+    singleQuote: false,
+    quoteProps: "as-needed",
+    jsxSingleQuote: false,
+    trailingComma: "all",
+    objectWrap: "preserve",
+    bracketSameLine: false,
+    arrowParens: "always",
+    singleAttributePerLine: false,
+
+
+    printWidth: 99,
+    tabWidth: 4,
+    useTabs: false
+
+
+    insertPragma: true,
+
+    proseWrap: "always",
+
+    overrides: [
+        {
+            files: ".prettierrc",
+            options: {
+                parser: "json",
+            },
+        },
+    ],
+}

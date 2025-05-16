@@ -17,7 +17,11 @@ return {
         'olrtg/nvim-emmet',
         lazy = true,
         config = function()
-            vim.keymap.set({ 'n', 'v' }, '<leader>xe', require('nvim-emmet').wrap_with_abbreviation)
+            vim.keymap.set(
+                { 'n', 'v' },
+                '<leader>xe',
+                require('nvim-emmet').wrap_with_abbreviation
+            )
         end,
     },
     {
@@ -37,9 +41,8 @@ return {
             -- Allows extra capabilities provided by nvim-cmp
             'hrsh7th/cmp-nvim-lsp',
         },
-        config = function()
+        config = function() -- Config function means we handle config not lazy with opts {}
             -- Brief aside: **What is LSP?**
-            --lsp
             -- LSP is an initialism you've probably heard, but might not understand what it is.
             --
             -- LSP stands for Language Server Protocol. It's a protocol that helps editors
@@ -77,7 +80,12 @@ return {
                     -- for LSP related items. It sets the mode, buffer and description for us each time.
                     local map = function(keys, func, desc, mode)
                         mode = mode or 'n'
-                        vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+                        vim.keymap.set(
+                            mode,
+                            keys,
+                            func,
+                            { buffer = event.buf, desc = 'LSP: ' .. desc }
+                        )
                     end
 
                     -- Jump to the definition of the word under your cursor.
@@ -90,20 +98,36 @@ return {
 
                     -- Jump to the implementation of the word under your cursor.
                     --  Useful when your language has ways of declaring types without an actual implementation.
-                    map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+                    map(
+                        'gI',
+                        require('telescope.builtin').lsp_implementations,
+                        '[G]oto [I]mplementation'
+                    )
 
                     -- Jump to the type of the word under your cursor.
                     --  Useful when you're not sure what type a variable is and you want to see
                     --  the definition of its *type*, not where it was *defined*.
-                    map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+                    map(
+                        '<leader>D',
+                        require('telescope.builtin').lsp_type_definitions,
+                        'Type [D]efinition'
+                    )
 
                     -- Fuzzy find all the symbols in your current document.
                     --  Symbols are things like variables, functions, types, etc.
-                    map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+                    map(
+                        '<leader>ds',
+                        require('telescope.builtin').lsp_document_symbols,
+                        '[D]ocument [S]ymbols'
+                    )
 
                     -- Fuzzy find all the symbols in your current workspace.
                     --  Similar to document symbols, except searches over your entire project.
-                    map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+                    map(
+                        '<leader>ws',
+                        require('telescope.builtin').lsp_dynamic_workspace_symbols,
+                        '[W]orkspace [S]ymbols'
+                    )
 
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
@@ -123,8 +147,16 @@ return {
                     --
                     -- When you move your cursor, the highlights will be cleared (the second autocommand).
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-                        local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+                    if
+                        client
+                        and client.supports_method(
+                            vim.lsp.protocol.Methods.textDocument_documentHighlight
+                        )
+                    then
+                        local highlight_augroup = vim.api.nvim_create_augroup(
+                            'kickstart-lsp-highlight',
+                            { clear = false }
+                        )
                         vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                             buffer = event.buf,
                             group = highlight_augroup,
@@ -138,10 +170,16 @@ return {
                         })
 
                         vim.api.nvim_create_autocmd('LspDetach', {
-                            group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+                            group = vim.api.nvim_create_augroup(
+                                'kickstart-lsp-detach',
+                                { clear = true }
+                            ),
                             callback = function(event2)
                                 vim.lsp.buf.clear_references()
-                                vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+                                vim.api.nvim_clear_autocmds({
+                                    group = 'kickstart-lsp-highlight',
+                                    buffer = event2.buf,
+                                })
                             end,
                         })
                     end
@@ -150,9 +188,14 @@ return {
                     -- code, if the language server you are using supports them
                     --
                     -- This may be unwanted, since they displace some of your code
-                    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+                    if
+                        client
+                        and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint)
+                    then
                         map('<leader>th', function()
-                            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+                            vim.lsp.inlay_hint.enable(
+                                not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })
+                            )
                         end, '[T]oggle Inlay [H]ints')
                     end
                 end,
@@ -165,7 +208,7 @@ return {
                 for type, icon in pairs(signs) do
                     diagnostic_signs[vim.diagnostic.severity[type]] = icon
                 end
-                vim.diagnostic.config { signs = { text = diagnostic_signs } }
+                vim.diagnostic.config({ signs = { text = diagnostic_signs } })
             end
 
             -- LSP servers and clients are able to communicate to each other what features they support.
@@ -173,7 +216,11 @@ return {
             --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
             --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
             local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+            capabilities = vim.tbl_deep_extend(
+                'force',
+                capabilities,
+                require('cmp_nvim_lsp').default_capabilities()
+            )
 
             -- Enable the following language servers
             --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -230,7 +277,17 @@ return {
                 },
 
                 emmet_language_server = {
-                    filetypes = { 'css', 'eruby', 'html', 'javascriptreact', 'less', 'sass', 'scss', 'pug', 'typescriptreact' },
+                    filetypes = {
+                        'css',
+                        'eruby',
+                        'html',
+                        'javascriptreact',
+                        'less',
+                        'sass',
+                        'scss',
+                        'pug',
+                        'typescriptreact',
+                    },
                     -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
                     -- **Note:** only the options listed in the table are supported.
                     init_options = {
@@ -257,6 +314,8 @@ return {
                         --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
                         variables = {},
                     },
+
+                    marksman = {},
                 },
 
                 -- harper_ls = {
@@ -280,24 +339,29 @@ return {
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format Lua code
-                'prettierd', -- General formatter for a bunch of languages
-                'clang-format',
+                -- 'prettierd', -- General formatter for a bunch of languages
+                -- 'clang-format',
             })
-            require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+            require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
-            require('mason-lspconfig').setup {
+            require('mason-lspconfig').setup({
                 handlers = {
                     function(server_name)
                         local server = servers[server_name] or {}
                         -- This handles overriding only values explicitly passed
                         -- by the server configuration above. Useful when disabling
                         -- certain features of an LSP (for example, turning off formatting for ts_ls)
-                        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+                        server.capabilities = vim.tbl_deep_extend(
+                            'force',
+                            {},
+                            capabilities,
+                            server.capabilities or {}
+                        )
                         require('lspconfig')[server_name].setup(server)
                     end,
                 },
-            }
+            })
         end,
     },
 }
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=4 sts=4 sw=4 et

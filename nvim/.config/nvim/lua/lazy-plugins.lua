@@ -15,10 +15,8 @@
 -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
 -- you can continue same window with `<space>sr` which resumes last telescope search
 
-require('lazy').setup {
-    spec = {
-        -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-
+require('lazy').setup({
+    spec = { -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
         -- NOTE: Plugins can also be added by using a table,
         -- with the first argument being the link and the following keys can be used to configure plugin behavior/loading/etc.
         --
@@ -29,76 +27,54 @@ require('lazy').setup {
         -- include a plugin definition from file lua/path/name.lua
         --
         -- Pick which colorscheme here
-        require 'plugins.colorscheme',
+        -- require 'plugins.colorscheme',
 
         -- [Random Misc]
-        'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+        { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
+
+        { import = 'plugins' },
         -- Git signs in the gutter
-        require 'plugins/gitsigns',
+        -- require 'plugins.gitsigns',
         -- Keymap hint popup
-        require 'plugins/which-key',
+        -- require 'plugins.which-key',
         -- Highlights todo comments and maybe some other stuff idrk
-        require 'plugins/todo-comments',
+        -- require 'plugins.todo-comments',
         -- Various small plugins, surround, extra keymaps, etc.
-        require 'plugins/mini',
+        -- require 'plugins.mini',
         -- Add indent lines even on blank lines
-        require 'plugins.indent_line',
+        -- require 'plugins.indent_line',
         -- Auto pair stuff
-        require 'plugins.autopairs',
+        -- require 'plugins.autopairs',
 
         -- File viewer "\" keymap
-        require 'plugins.neo-tree',
+        -- require 'plugins.neo-tree',
         -- Fuzzy finder and move around files
-        require 'plugins/telescope',
+        -- require 'plugins.telescope',
 
         -- lspconfig plugin, mason, and configuration for other language servers
-        require 'plugins/lspconfig',
+        -- require 'plugins.lspconfig',
         -- Formatting
-        require 'plugins/conform',
+        -- require 'plugins.conform',
         -- Autocomplete
-        require 'plugins/cmp',
+        -- require 'plugins.cmp',
         -- Syntax highlighting
-        require 'plugins/treesitter',
+        -- require 'plugins.treesitter',
         -- Linter by filetype and the autocommand to make it work
-        require 'plugins.lint',
+        -- require 'plugins.lint',
 
         -- Dap plugins, haven't really gotten there.
-        require 'plugins.debug',
+        -- require 'plugins.debug',
 
         -- Markdown Plugins
         -- markdown-render,
-        require 'plugins.markdown',
+        -- require 'plugins.markdown',
         -- require 'plugins.obsidian',
 
         -- bunch o shit
         -- require 'plugins.telekasten',
-
-        {
-            'danymat/neogen',
-            config = true,
-            opts = { snippet_engine = 'luasnip' },
-        },
-
-        {
-            'goolord/alpha-nvim',
-            dependencies = {
-                'echasnovski/mini.icons',
-                'nvim-lua/plenary.nvim',
-            },
-            config = function()
-                require('alpha').setup(require('alpha.themes.theta').config)
-                -- require('alpha').setup(require('alpha.themes.dashboard').config)
-                -- require('alpha').setup(require('alpha.themes.startify').config)
-            end,
-        },
-        {
-            'catgoose/nvim-colorizer.lua',
-            event = 'BufReadPre',
-            opts = {},
-        },
     },
     ui = {
-        backdrop = 75,
+        -- backdrop = 100,
         -- If you are using a Nerd Font: set icons to an empty table which will use the
         -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
         icons = vim.g.have_nerd_font and {} or {
@@ -117,6 +93,6 @@ require('lazy').setup {
             lazy = '💤 ',
         },
     },
-}
+})
 
 -- require('lazy').setup(plugins, ui)

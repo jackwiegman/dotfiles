@@ -17,6 +17,7 @@ return {
             -- - sr)'  - [S]urround [R]eplace [)] [']
             require('mini.surround').setup()
 
+            -- Options in config.options
             require('mini.basics').setup()
 
             -- Simple and easy statusline.

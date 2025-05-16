@@ -29,10 +29,10 @@ return {
             -- },
             {
                 name = 'notes',
-                path = '~/notes/',
+                path = '~/Notes/',
             },
         },
         -- see below for full list of options 👇
-        -- ui.enable = {'false'},
+        enable = { 'false' },
     },
 }

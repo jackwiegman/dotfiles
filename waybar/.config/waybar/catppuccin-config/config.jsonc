@@ -4,7 +4,8 @@
     "height": 30,
     "spacing": 8,
     "modules-left": [
-        "sway/workspaces",
+        //"sway/workspaces",
+        "hyprland/workspaces",
         "tray",
         "sway/mode",
         "mpris",
@@ -14,7 +15,8 @@
         "clock",
     ],
     "modules-right": [
-    "sway/scratchpad",
+    //"sway/scratchpad",
+    "hyprland/scratchpad",
     "idle_inhibitor",
     "custom/kernel",
     "disk#ssd",
@@ -25,7 +27,7 @@
     "custom/weather"
     ],
     
-     "sway/workspaces": {
+     "hyprland/workspaces": {
          "disable-scroll": false,
          "all-outputs": true,
          "warp-on-scroll": false,
@@ -52,7 +54,7 @@
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
     },
-    "sway/mode": {
+    "hyprland/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
     "mpris": {
@@ -71,7 +73,7 @@
         },
         // "ignored-players": ["cmus"]
     },
-    "sway/scratchpad": {
+    "hyprland/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
         "format-icons": ["", ""],
