@@ -5,7 +5,7 @@
 --  For more options, you can see `:help option-list`
 
 -- Default file viewer to tree style
-vim.cmd 'let g:netrw_liststyle=3'
+vim.cmd('let g:netrw_liststyle=3')
 
 -- Make line numbers default
 vim.opt.number = true
@@ -44,8 +44,8 @@ vim.opt.shiftwidth = 4 -- number of spaces to use for (auto)indention levels
 -- vim.opt.shiftround = true -- Round indentation to multiple of shiftwidth when shifting lines
 -- vim.opt.smartindent =  -- true -- smart autoindenting for C programs
 
-vim.opt.textwidth = 99
-vim.opt.colorcolumn = '100'
+vim.opt.textwidth = 80
+vim.opt.colorcolumn = '80'
 
 -- Save undo history
 vim.opt.undofile = true

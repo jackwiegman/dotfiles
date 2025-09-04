@@ -24,6 +24,9 @@ return {
             )
         end,
     },
+    -- {
+    --     'mfussenegger/nvim-jdtls',
+    -- },
     {
         -- Main LSP Configuration
         'neovim/nvim-lspconfig',
@@ -71,7 +74,10 @@ return {
             --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
             --    function will be executed to configure the current buffer
             vim.api.nvim_create_autocmd('LspAttach', {
-                group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+                group = vim.api.nvim_create_augroup(
+                    'kickstart-lsp-attach',
+                    { clear = true }
+                ),
                 callback = function(event)
                     -- NOTE: Remember that Lua is a real programming language, and as such it is possible
                     -- to define small helper and utility functions so you don't have to repeat yourself.
@@ -91,10 +97,18 @@ return {
                     -- Jump to the definition of the word under your cursor.
                     --  This is where a variable was first declared, or where a function is defined, etc.
                     --  To jump back, press <C-t>.
-                    map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+                    map(
+                        'gd',
+                        require('telescope.builtin').lsp_definitions,
+                        '[G]oto [D]efinition'
+                    )
 
                     -- Find references for the word under your cursor.
-                    map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+                    map(
+                        'gr',
+                        require('telescope.builtin').lsp_references,
+                        '[G]oto [R]eferences'
+                    )
 
                     -- Jump to the implementation of the word under your cursor.
                     --  Useful when your language has ways of declaring types without an actual implementation.
@@ -135,7 +149,12 @@ return {
 
                     -- Execute a code action, usually your cursor needs to be on top of an error
                     -- or a suggestion from your LSP for this to activate.
-                    map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+                    map(
+                        '<leader>ca',
+                        vim.lsp.buf.code_action,
+                        '[C]ode [A]ction',
+                        { 'n', 'x' }
+                    )
 
                     -- WARN: This is not Goto Definition, this is Goto Declaration.
                     --  For example, in C this would take you to the header.
@@ -146,7 +165,8 @@ return {
                     --    See `:help CursorHold` for information about when this is executed
                     --
                     -- When you move your cursor, the highlights will be cleared (the second autocommand).
-                    local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    local client =
+                        vim.lsp.get_client_by_id(event.data.client_id)
                     if
                         client
                         and client.supports_method(
@@ -157,17 +177,23 @@ return {
                             'kickstart-lsp-highlight',
                             { clear = false }
                         )
-                        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.document_highlight,
-                        })
+                        vim.api.nvim_create_autocmd(
+                            { 'CursorHold', 'CursorHoldI' },
+                            {
+                                buffer = event.buf,
+                                group = highlight_augroup,
+                                callback = vim.lsp.buf.document_highlight,
+                            }
+                        )
 
-                        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.clear_references,
-                        })
+                        vim.api.nvim_create_autocmd(
+                            { 'CursorMoved', 'CursorMovedI' },
+                            {
+                                buffer = event.buf,
+                                group = highlight_augroup,
+                                callback = vim.lsp.buf.clear_references,
+                            }
+                        )
 
                         vim.api.nvim_create_autocmd('LspDetach', {
                             group = vim.api.nvim_create_augroup(
@@ -190,11 +216,15 @@ return {
                     -- This may be unwanted, since they displace some of your code
                     if
                         client
-                        and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint)
+                        and client.supports_method(
+                            vim.lsp.protocol.Methods.textDocument_inlayHint
+                        )
                     then
                         map('<leader>th', function()
                             vim.lsp.inlay_hint.enable(
-                                not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })
+                                not vim.lsp.inlay_hint.is_enabled({
+                                    bufnr = event.buf,
+                                })
                             )
                         end, '[T]oggle Inlay [H]ints')
                     end
@@ -203,7 +233,8 @@ return {
 
             -- Change diagnostic symbols in the sign column (gutter)
             if vim.g.have_nerd_font then
-                local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
+                local signs =
+                    { ERROR = '', WARN = '', INFO = '', HINT = '' }
                 local diagnostic_signs = {}
                 for type, icon in pairs(signs) do
                     diagnostic_signs[vim.diagnostic.severity[type]] = icon
@@ -235,7 +266,12 @@ return {
             local servers = {
                 -- Check if we're in c or c++ before we do a fallback, gets rid of "I can't do c++17" in c files
                 clangd = {
-                    cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
+                    cmd = {
+                        'clangd',
+                        '--background-index',
+                        '--clang-tidy',
+                        '--log=verbose',
+                    },
                     func = function(ft)
                         if ft == 'c' then
                             fallback = { '-std=c99' }
@@ -314,9 +350,12 @@ return {
                         --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
                         variables = {},
                     },
-
-                    marksman = {},
                 },
+
+                marksman = {},
+
+                -- java_language_server = {},
+                jdtls = {},
 
                 -- harper_ls = {
                 --     settings = {
@@ -342,7 +381,13 @@ return {
                 -- 'prettierd', -- General formatter for a bunch of languages
                 -- 'clang-format',
             })
-            require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
+            require('mason-tool-installer').setup({
+                ensure_installed = ensure_installed,
+            })
+
+            -- empty function to ignore jdtls
+            -- ensure that jdtls doesn't run with nvim-lspconfig
+            local noop = function() end
 
             require('mason-lspconfig').setup({
                 handlers = {
@@ -359,9 +404,10 @@ return {
                         )
                         require('lspconfig')[server_name].setup(server)
                     end,
+                    ['jdtls'] = noop,
                 },
             })
         end,
     },
 }
--- vim: ts=4 sts=4 sw=4 et
+-- vim: ts=4 sts=4 sw=4 tw=80 et

@@ -11,20 +11,29 @@ return { -- Putting all the markdown plugins and config here
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {
+            latex = {
+                -- converter = 'pdflatex',
+                -- render_modes = { 'n', 'c', 't' },
+                top_pad = 1,
+                -- bottom_pad = 0,
+            },
             indent = {
                 enabled = true,
                 skip_level = 2,
                 icon = '',
             },
-            -- completions = { lsp = { enabled = true } }, -- Add completions through lsp, will also do with cmp
-            latex = {
-                render_modes = { 'n', 'c', 't' },
-                top_pad = 1,
-                bottom_pad = 1,
-            },
+            completions = { lsp = { enabled = true } }, -- Add completions through lsp, will also do with cmp
             heading = {
                 width = 'block',
                 right_pad = 2,
+                backgrounds = {
+                    'Search',
+                    'RenderMarkdownH2Bg',
+                    'RenderMarkdownH3Bg',
+                    'RenderMarkdownH4Bg',
+                    'RenderMarkdownH5Bg',
+                    'RenderMarkdownH6Bg',
+                },
             },
         },
     },

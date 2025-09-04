@@ -20,19 +20,19 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- [[ Install `lazy.nvim` plugin manager ]]
+require('lazy-bootstrap')
+
 -- [[ Setting options ]]
-require 'options'
+require('options')
 
 -- [[ Basic Keymaps ]]
-require 'keymaps'
+require('keymaps')
 
 -- [[ Autocommands ]]
-require 'autocommands'
-
--- [[ Install `lazy.nvim` plugin manager ]]
-require 'lazy-bootstrap'
+require('autocommands')
 
 -- [[ Configure and install plugins ]]
-require 'lazy-plugins'
+require('lazy-plugins')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
