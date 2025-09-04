@@ -14,9 +14,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 # preference ordered base directories relative to which data files should be searched
-export XDG_DATA_DIRS="/usr/local/share/:/usr/share/"
+# export XDG_DATA_DIRS="/usr/local/share/:/usr/share/"
 # preference ordered base directories relative to which configuration files should be searched
-export XDG_CONFIG_DIRS="/etc/xdg/"
+# export XDG_CONFIG_DIRS="/etc/xdg/"
 # user specific runtime files and other file objects
 # export XDG_RUNTIME_DIR=
 
@@ -28,3 +28,10 @@ export VISUAL="nvim" # Full screeen editor
 export PAGER="bat" # idk if this one exists anywhere
 
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
+export JAVA_HOME="/usr/lib/jvm/java-24-openjdk"
+
+# For texlive variables hopefully
+export PATH="$PATH/usr/local/texlive/2021/bin/x86_64-linux"
+
+export MANPATH="$MANPATH/usr/local/texlive/2021/texmf-dist/doc/man"
+export INFOPATH="$INFOPATH/usr/local/texlive/2021/texmf-dist/doc/info"
