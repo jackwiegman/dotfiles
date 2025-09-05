@@ -56,7 +56,11 @@ alias gaa='git add --all'
 alias gc='git commit'
 
 alias gst='git status'
+<<<<<<< HEAD
 alias gss='git status -sb'
+=======
+alias gss='git status -s'
+>>>>>>> refs/remotes/origin/main
 # alias gsb='git status -sb'
 
 
