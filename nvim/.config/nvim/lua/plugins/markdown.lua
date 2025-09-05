@@ -13,8 +13,9 @@ return { -- Putting all the markdown plugins and config here
         opts = {
             latex = {
                 -- converter = 'pdflatex',
+                converter = 'ltx2unitxt',
                 -- render_modes = { 'n', 'c', 't' },
-                top_pad = 1,
+                -- top_pad = 1,
                 -- bottom_pad = 0,
             },
             indent = {

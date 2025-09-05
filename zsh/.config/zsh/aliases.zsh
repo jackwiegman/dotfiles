@@ -31,7 +31,7 @@ alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias md='mkdir -p'
 alias rd='rmdir'
 
-alias _=sudo
+# alias _=sudo
 
 alias hist='fc -l 1'
 
@@ -48,14 +48,19 @@ alias update-mirrors="sudo reflector --latest 10 --sort rate --save /etc/pacman.
 #######################
 # GIT ALIASES
 #######################
-alias g=git
 
+# MY ALIASES
+alias g=git
 alias ga='git add'
 alias gaa='git add --all'
+alias gc='git commit'
+
+alias gst='git status'
+alias gss='git status -sb'
+# alias gsb='git status -sb'
+
 
 alias gb='git branch'
-
-alias gc='git commit'
 
 alias gd='git diff'
 # alias gdt='git diff-tree --no-commit-id --name-only -r'
@@ -89,14 +94,14 @@ alias gignored='git ls-files -v | grep "^[[:lower:]]"'
 #
 # alias globurl='noglob urlglobber '
 #
-alias gm='git merge'
-alias gmom='git merge origin/main'
-alias gmum='git merge upstream/main'
+# alias gm='git merge'
+# alias gmom='git merge origin/main'
+# alias gmum='git merge upstream/main'
 
-alias gmt='git mergetool --no-prompt'
-alias gmtvim='git mergetool --no-prompt --tool=vimdiff'
+# alias gmt='git mergetool --no-prompt'
+# alias gmtvim='git mergetool --no-prompt --tool=vimdiff'
 
-alias gp='git push'
+# alias gp='git push'
 # alias gpd='git push --dry-run'
 # alias gpoat='git push origin --all && git push origin --tags'
 # alias gpsup='git push --set-upstream origin $(git_current_branch)'
@@ -126,7 +131,6 @@ alias gp='git push'
 # alias gru='git reset --'
 # alias grup='git remote update'
 # alias grv='git remote -v'
-# alias gsb='git status -sb'
 # alias gsd='git svn dcommit'
 
 
