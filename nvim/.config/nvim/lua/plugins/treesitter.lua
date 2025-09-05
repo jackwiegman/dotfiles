@@ -14,6 +14,7 @@ return {
                 'doxygen',
                 'html',
                 'javascript',
+                'json',
                 'lua',
                 'luadoc',
                 'markdown',
@@ -22,6 +23,7 @@ return {
                 'query',
                 'vim',
                 'vimdoc',
+                'yaml',
             },
             -- Autoinstall languages that are not installed
             auto_install = true,
