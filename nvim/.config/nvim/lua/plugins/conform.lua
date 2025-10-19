@@ -38,10 +38,14 @@ return {
                 lua = { 'stylua' },
                 html = { 'prettier', 'prettierd', stop_after_first = true },
                 css = { 'prettier', 'prettierd', stop_after_first = true },
-                javascript = { 'prettier', 'prettierd', stop_after_first = true },
+                javascript = {
+                    'prettier',
+                    'prettierd',
+                    stop_after_first = true,
+                },
                 c = { 'clang-format' },
                 cpp = { 'clang-format' },
-                java = { 'clang-format', 'jdtls' },
+                java = { 'clang-format', 'jdtls', stop_after_first = true },
                 json = { 'prettier', 'prettierd', stop_after_first = true },
                 json5 = { 'prettier', 'prettierd', stop_after_first = true },
 
@@ -56,4 +60,4 @@ return {
         },
     },
 }
--- vim: tw=80 ts=4 sts=4 sw=4 et
+-- vim: ts=4 sts=4 sw=4 et

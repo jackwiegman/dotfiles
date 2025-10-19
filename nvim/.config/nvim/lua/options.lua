@@ -44,8 +44,8 @@ vim.opt.shiftwidth = 4 -- number of spaces to use for (auto)indention levels
 -- vim.opt.shiftround = true -- Round indentation to multiple of shiftwidth when shifting lines
 -- vim.opt.smartindent =  -- true -- smart autoindenting for C programs
 
-vim.opt.textwidth = 80
-vim.opt.colorcolumn = '80'
+vim.opt.textwidth = 100
+vim.opt.colorcolumn = '100'
 
 -- Save undo history
 vim.opt.undofile = true

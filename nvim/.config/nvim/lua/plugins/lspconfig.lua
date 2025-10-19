@@ -24,17 +24,17 @@ return {
             )
         end,
     },
-    -- {
-    --     'mfussenegger/nvim-jdtls',
-    -- },
+    {
+        'mfussenegger/nvim-jdtls',
+    },
     {
         -- Main LSP Configuration
         'neovim/nvim-lspconfig',
 
         dependencies = {
             -- Automatically install LSPs and related tools to stdpath for Neovim
-            { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-            'williamboman/mason-lspconfig.nvim',
+            { 'mason-org/mason.nvim', opts = {} }, -- NOTE: Must be loaded before dependants
+            'mason-org/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
 
             -- Useful status updates for LSP.
@@ -45,6 +45,7 @@ return {
             'hrsh7th/cmp-nvim-lsp',
         },
         config = function() -- Config function means we handle config not lazy with opts {}
+            --
             -- Brief aside: **What is LSP?**
             -- LSP is an initialism you've probably heard, but might not understand what it is.
             --
@@ -402,7 +403,8 @@ return {
                             capabilities,
                             server.capabilities or {}
                         )
-                        require('lspconfig')[server_name].setup(server)
+                        -- require('lspconfig')[server_name].setup(server)
+                        vim.lsp.enable(server)
                     end,
                     ['jdtls'] = noop,
                 },
