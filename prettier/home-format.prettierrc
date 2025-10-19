@@ -6,7 +6,7 @@
     experimentalTernaries: true,
     experimentalOperatorPosition: "start",
 
-    printWidth: 80,
+    printWidth: 100,
     useTabs: false,
 
     semi: true,
@@ -18,12 +18,11 @@
     bracketSameLine: false,
     arrowParens: "always",
     rangeStart: 0,
-    rangeEnd: Infinity,
+    rangeEnd: 0,
     requirePragma: false,
     insertPragma: false,
     proseWrap: "preserve",
     htmlWhitespaceSensitivity: "css",
-    vueIndentScript-and-style: false,
     endOfLine: "lf",
     embeddedLanguageFormatting: "auto",
     singleAttributePerLine: false,
