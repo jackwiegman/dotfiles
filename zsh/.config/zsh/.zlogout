@@ -2,4 +2,4 @@
 
 clear
 
-echo "bye bitch"
+# echo "bye bitch"

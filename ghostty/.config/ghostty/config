@@ -46,7 +46,8 @@ font-family = "JetBrainsMono Nerd Font Mono"
 #  theme = iTerm2 Solarized Light
 # theme = Builtin Solarized Light#
 # theme = GruvboxLight
-theme = GruvboxDark
+theme = Gruvbox Dark
+# theme = Gruvbox Dark Hard
 #theme = Monokai Pro Light Sun
 # theme = ayu_light
 
@@ -57,3 +58,7 @@ unfocused-split-opacity = 0.8
 minimum-contrast = 1.1
 
 confirm-close-surface = false
+
+window-inherit-working-directory = true
+
+# input = "clear\nfastfetch\n"
