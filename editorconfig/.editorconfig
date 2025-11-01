@@ -6,10 +6,13 @@ charset = utf-8
 
 indent_style = space
 indent_size = 4
-tabwidth = 4
+# tabwidth = 4
 
-# Taken by neovim
 max_line_length = 100
+
+# [*.{java,c,cpp}]
+# # Taken by neovim
+# max_line_length = 80
 
 # Format ss or ss-TT (IS0639 or ISO 3166) identifiers
 # spelling_language = 
