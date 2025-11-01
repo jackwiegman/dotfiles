@@ -1,7 +1,7 @@
 # SET ENVIRONMENTAL VARIABLES FOR ZSH SESSIONS
 
 # ZSH HOME CONFIG DIRECTORY
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+# export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # XDG VARIABLES
 # user-specific configuration files
@@ -28,10 +28,9 @@ export VISUAL="nvim" # Full screeen editor
 export PAGER="bat" # idk if this one exists anywhere
 
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
-export JAVA_HOME="/usr/lib/jvm/java-24-openjdk"
 
 # For texlive variables hopefully
-export PATH="$PATH/usr/local/texlive/2021/bin/x86_64-linux"
+export PATH="$PATH:/usr/local/texlive/2021/bin/x86_64-linux"
 
-export MANPATH="$MANPATH/usr/local/texlive/2021/texmf-dist/doc/man"
-export INFOPATH="$INFOPATH/usr/local/texlive/2021/texmf-dist/doc/info"
+export MANPATH="$MANPATH:/usr/local/texlive/2021/texmf-dist/doc/man"
+export INFOPATH="$INFOPATH:/usr/local/texlive/2021/texmf-dist/doc/info"
