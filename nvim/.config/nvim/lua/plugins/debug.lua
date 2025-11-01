@@ -24,7 +24,7 @@ return {
         -- Add your own debuggers here
         'leoluz/nvim-dap-go',
 
-        'mfussenegger/nvim-jdtls',
+        -- 'mfussenegger/nvim-jdtls',
     },
     keys = {
         -- Basic debugging keymaps, feel free to change to your liking!
@@ -66,7 +66,9 @@ return {
         {
             '<leader>B',
             function()
-                require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
+                require('dap').set_breakpoint(
+                    vim.fn.input('Breakpoint condition: ')
+                )
             end,
             desc = 'Debug: Set Breakpoint',
         },

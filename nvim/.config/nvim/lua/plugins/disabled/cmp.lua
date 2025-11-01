@@ -136,8 +136,8 @@ return {
                     { name = 'render-markdown' },
                     { name = 'obsidian' },
                     { name = 'doxygen' },
-                    { name = 'javadoc' },
-                    { name = 'nvim-jdtls' },
+                    -- { name = 'javadoc' },
+                    -- { name = 'nvim-jdtls' },
                     { name = 'marksman' },
                     { name = 'ltex-ls-plus' },
                     -- {

@@ -13,6 +13,7 @@ return {
                 'diff',
                 'doxygen',
                 'html',
+                'java',
                 'javascript',
                 'json',
                 'lua',

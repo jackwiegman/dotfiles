@@ -1,38 +1,10 @@
---[[
-    If you don't know anything about Lua, I recommend taking some time to read through
-    a guide. One possible example which will only take 10-15 minutes:
-      - https://learnxinyminutes.com/docs/lua/
-
-    After understanding a bit more about Lua, you can use `:help lua-guide` as a
-    reference for how Neovim integrates Lua.
-    - :help lua-guide
-    - (or HTML version): https://neovim.io/doc/user/lua-guide.html
-
--]]
-
--- [[ Setting Global Variables in Vim]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+-- Map space to leader
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Set to true if you have a Nerd Font installed and selected in the terminal
+-- True if nerd font installed in terminal
+-- User set, checks for icons
 vim.g.have_nerd_font = true
 
--- [[ Install `lazy.nvim` plugin manager ]]
-require('lazy-bootstrap')
-
--- [[ Setting options ]]
-require('options')
-
--- [[ Basic Keymaps ]]
-require('keymaps')
-
--- [[ Autocommands ]]
-require('autocommands')
-
--- [[ Configure and install plugins ]]
-require('lazy-plugins')
-
--- The line beneath this is called `modeline`. See `:help modeline`
+require('config')
+require('core')
