@@ -13,6 +13,8 @@ vim.o.scrolloff = 8 -- Lines between edge of screen
 vim.o.sidescrolloff = 5 -- Side scrollof
 vim.o.textwidth = 100
 vim.o.colorcolumn = '100' -- Show column at 100 characters
+-- Default file viewer to tree style
+vim.cmd('let g:netrw_liststyle=3')
 
 -- [[ Indentation ]]
 -- vim.o.tabstop = 4                               -- Tab width

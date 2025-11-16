@@ -58,19 +58,23 @@ return {
     opts = {
       ensure_installed = {
         -- SERVERS
+        'black', -- Python lsp
         'clangd',
         'lua_ls',
         'emmet_language_server',
         'marksman',
         'jsonls',
         'jdtls',
-        'pyright',
-        'cssls',
-        'ts_ls',
+        -- 'pyright',
+        -- 'cssls',
+        -- 'ts_ls',
 
         -- FORMATTERS
+        'shfmt',
         'stylua', -- lua formatter
         'prettierd', -- prettier formatter
+        -- 'xmllint',
+        'xmlformatter',
       },
     },
     dependencies = {

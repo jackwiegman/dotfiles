@@ -17,12 +17,13 @@ return {
       },
     },
     opts = {
-      notify_on_error = false,
+      -- log_level = { vim.log.levels.DEBUG },
+      notify_on_error = { false },
       format_on_save = function(bufnr)
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, xml = true }
         local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
@@ -34,23 +35,27 @@ return {
           lsp_format = lsp_format_opt,
         }
       end,
+      formatters = {
+                xmllint = {
+                      cmd = {"xmllint"},
+                      args = {"--format", "-"}
+                      }
+            },
       formatters_by_ft = {
         lua = { 'stylua' },
-        html = { 'prettier', 'prettierd', stop_after_first = true },
-        css = { 'prettier', 'prettierd', stop_after_first = true },
-        javascript = {
-          'prettier',
-          'prettierd',
-          stop_after_first = true,
-        },
+        html = { 'prettierd' },
+        css = { 'prettierd' },
+        javascript = { 'prettierd' },
         c = { 'clang-format' },
         cpp = { 'clang-format' },
-        java = { 'clang-format', 'jdtls', stop_after_first = true },
-        json = { 'prettier', 'prettierd', stop_after_first = true },
-        json5 = { 'prettier', 'prettierd', stop_after_first = true },
+        java = { 'clang-format', stop_after_first = true },
+        json = { 'prettierd' },
+        json5 = { 'prettierd' },
+        jq = { 'prettierd' },
 
         python = { 'black' },
-        markdown = { 'prettierd', 'prettier', stop_after_first = true },
+        markdown = { 'prettierd' },
+        xml = { 'xmlformat', 'xmllint' },
         yaml = { 'prettierd' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
