@@ -1,38 +1,38 @@
 {
 
-    tabWidth: 4,
-    quoteProps: "consistent",
+    "tabWidth": 4,
+    "quoteProps": "consistent",
 
-    experimentalTernaries: true,
-    experimentalOperatorPosition: "start",
+    "experimentalTernaries": true,
+    "experimentalOperatorPosition": "start",
 
-    printWidth: 100,
-    useTabs: false,
+    "printWidth": 100,
+    "useTabs": false,
 
-    semi: true,
-    singleQuote: false,
-    jsxSingleQuote: false,
-    trailingComma: "all",
-    bracketSpacing: true,
-    objectWrap: "preserve",
-    bracketSameLine: false,
-    arrowParens: "always",
-    rangeStart: 0,
-    rangeEnd: 0,
-    requirePragma: false,
-    insertPragma: false,
-    proseWrap: "preserve",
-    htmlWhitespaceSensitivity: "css",
-    endOfLine: "lf",
-    embeddedLanguageFormatting: "auto",
-    singleAttributePerLine: false,
+    "semi": true,
+    "singleQuote": false,
+    "jsxSingleQuote": false,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "objectWrap": "preserve",
+    "bracketSameLine": false,
+    "arrowParens": "always",
+    "rangeStart": 0,
+    "rangeEnd": 0,
+    "requirePragma": false,
+    "insertPragma": false,
+    "proseWrap": "preserve",
+    "htmlWhitespaceSensitivity": "css",
+    "endOfLine": "lf",
+    "embeddedLanguageFormatting": "auto",
+    "singleAttributePerLine": false,
 
-    overrides: [
+    "overrides": [
         {
-            files: ".prettierrc",
-            options: {
-                parser: "json",
-            },
-        },
-    ],
+            "files": ".prettierrc",
+            "options": {
+                "parser": "json"
+            }
+        }
+    ]
 }
