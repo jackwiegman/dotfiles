@@ -1,48 +1,104 @@
 return {
-    { -- Highlight, edit, and navigate code
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
-        main = 'nvim-treesitter.configs', -- Sets main module to use for opts
-        -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-        opts = {
-            ensure_installed = {
-                'bash',
-                'c',
-                'cpp',
-                'css',
-                'diff',
-                'doxygen',
-                'html',
-                'java',
-                'javascript',
-                'json',
-                'lua',
-                'luadoc',
-                'markdown',
-                'markdown_inline',
-                'latex',
-                'query',
-                'vim',
-                'vimdoc',
-                'yaml',
-            },
-            -- Autoinstall languages that are not installed
-            auto_install = true,
-            highlight = {
-                enable = true,
-                -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-                --  If you are experiencing weird indenting issues, add the language to
-                --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-                additional_vim_regex_highlighting = { 'ruby' },
-            },
-            indent = { enable = true, disable = { 'ruby' } },
-        },
-        -- There are additional nvim-treesitter modules that you can use to interact
-        -- with nvim-treesitter. You should go explore a few and see what interests you:
-        --
-        --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-        --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-        --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  { -- Treesitter block
+
+    'nvim-treesitter/nvim-treesitter',
+    -- Recommended instal from readme
+    branch = 'master',
+    lazy = false,
+    build = ':TSUpdate',
+    --
+    main = 'nvim-treesitter.configs', -- Sets main mod to use for opts
+
+    opts = {
+      ensure_installed = {
+        'awk',
+        'bash',
+        'bibtex',
+        'c',
+        'cmake',
+        'cpp',
+        'css',
+        'csv',
+        'diff',
+        'doxygen',
+        'editorconfig',
+        -- 'git_commit',
+        'git_config',
+        'git_rebase',
+        'gitattributes',
+        'gitcommit',
+        'gitignore',
+        -- 'go',
+        -- 'goctl',
+        'gpg',
+        'groovy',
+        'html',
+        'http',
+        'hyprlang',
+        'hurl', -- runs http requests from a plaintext format
+        'ini',
+        'java',
+        'javascript',
+        'javadoc',
+        'jq',
+        'jsdoc',
+        'json',
+        'json5',
+        'jsonc',
+        'kconfig', -- kernel config lang
+        'latex',
+        -- 'llvm',
+        'lua',
+        'luadoc',
+        'make',
+        'markdown',
+        'markdown_inline',
+        -- 'meson',
+        'passwd',
+        'php',
+        'phpdoc',
+        'powershell',
+        'printf',
+        'pymanifest',
+        'python',
+        'query',
+        'r',
+        'regex',
+        'requirements', -- pip requirement files
+        -- 'rtf',
+        'ruby',
+        'rust',
+        'scheme',
+        'sql',
+        -- 'sqlite',
+        'ssh_config',
+        -- 'superhtml', -- adds extra formatting and capabilities
+        'sway',
+        -- 'tablegen', -- llvm tablegen lang
+        -- 'tmux',
+        -- 'todotxt', -- todolist parsing
+        'toml',
+        -- 'typescript',
+        'udev',
+        'vim',
+        'vimdoc',
+        'xml',
+        -- 'xresources',
+        'yaml',
+      },
+      -- Autoinstall languages that are not installed
+      auto_install = true,
+      highlight = {
+        enable = true,
+        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+        --  If you are experiencing weird indenting issues, add the language to
+        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+        additional_vim_regex_highlighting = { 'ruby' },
+      },
+      indent = {
+        enable = true,
+        disable = { 'ruby' },
+      },
     },
+  },
 }
--- vim: ts=4 sts=4 sw=4 et

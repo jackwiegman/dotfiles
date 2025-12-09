@@ -7,55 +7,49 @@ return {
       {
         '<leader>f',
         function()
-          require('conform').format({
-            async = true,
-            lsp_format = 'fallback',
-          })
+          require('conform').format({ async = true, lsp_format = 'fallback' })
         end,
         mode = '',
         desc = '[F]ormat buffer',
       },
     },
     opts = {
-      -- log_level = { vim.log.levels.DEBUG },
-      notify_on_error = { false },
+      notify_on_error = false,
       format_on_save = function(bufnr)
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true, xml = true }
-        local lsp_format_opt
+        -- local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = {}
         if disable_filetypes[vim.bo[bufnr].filetype] then
-          lsp_format_opt = 'never'
+          return nil
         else
-          lsp_format_opt = 'fallback'
+          return {
+            timeout_ms = 500,
+            lsp_format = 'fallback',
+          }
         end
-        return {
-          timeout_ms = 500,
-          lsp_format = lsp_format_opt,
-        }
       end,
-      formatters = {
-                xmllint = {
-                      cmd = {"xmllint"},
-                      args = {"--format", "-"}
-                      }
-            },
       formatters_by_ft = {
         lua = { 'stylua' },
-        html = { 'prettierd' },
-        css = { 'prettierd' },
-        javascript = { 'prettierd' },
+
         c = { 'clang-format' },
         cpp = { 'clang-format' },
-        java = { 'clang-format', stop_after_first = true },
+        -- java = { 'clang-format' },
+        java = { lsp_format = 'prefer' },
+
+        python = { 'black' },
+
+        markdown = { 'prettierd' },
+        html = { 'prettierd' },
+        css = { 'prettierd' },
+
+        javascript = { 'prettierd' },
         json = { 'prettierd' },
         json5 = { 'prettierd' },
         jq = { 'prettierd' },
 
-        python = { 'black' },
-        markdown = { 'prettierd' },
-        xml = { 'xmlformat', 'xmllint' },
+        xml = { 'xmllint' },
         yaml = { 'prettierd' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
@@ -66,4 +60,3 @@ return {
     },
   },
 }
--- vim: ts=4 sts=4 sw=4 et
