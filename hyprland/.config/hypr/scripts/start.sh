@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Export standard environment variables
@@ -18,8 +17,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # [ -f ~/.pam_environment ] && source ~/.pam_environment
 
 # Start dbus if not already running
-if ! pgrep -x "dbus-daemon" > /dev/null; then
-  eval "$(dbus-launch --sh-syntax)"
+if ! pgrep -x "dbus-daemon" >/dev/null; then
+    eval "$(dbus-launch --sh-syntax)"
 fi
 
 # Start gnome-keyring components
@@ -39,4 +38,5 @@ fi
 # swww img ~/Pictures/wallpapers/default.jpg &
 
 # Finally, launch Hyprland
-exec Hyprland
+# exec Hyprland
+start-hyprland
