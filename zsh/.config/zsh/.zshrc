@@ -51,7 +51,7 @@ function plugin-load {
       echo "Cloning $repo..."
       git clone -q --depth 1 --recursive --shallow-submodules \
         git@github.com:$repo $plugdir
-       git submodule add --reference git@github.com:$repo $plugdir
+       # git submodule add --reference git@github.com:$repo $plugdir
     fi
     if [[ ! -e $initfile ]]; then
       initfiles=($plugdir/*.{plugin.zsh,zsh-theme,zsh,sh}(N))
@@ -111,13 +111,18 @@ compinit
 # YAZI alias function to change directory on 'q', quit without moving with 'Q'
 # Call with function name 'y'
 #
-
+# function y() {
+#     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+#     yazi "$@" --cwd-file="$tmp"
+#     if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+#         builtin cd -- "$cwd"
+#     fi
+#     rm -f -- "$tmp"
+# }
 function y() {
-    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-    yazi "$@" --cwd-file="$tmp"
-    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-        builtin cd -- "$cwd"
-    fi
-    rm -f -- "$tmp"
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
 }
-
