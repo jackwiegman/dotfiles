@@ -40,7 +40,7 @@ return {
 
         python = { 'black' },
 
-        markdown = { 'prettierd' },
+        -- markdown = { 'prettierd' },
         html = { 'prettierd' },
         css = { 'prettierd' },
 
@@ -49,7 +49,7 @@ return {
         json5 = { 'prettierd' },
         jq = { 'prettierd' },
 
-        xml = { 'xmllint' },
+        -- xml = { 'xmllint' },
         yaml = { 'prettierd' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },

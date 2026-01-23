@@ -335,6 +335,8 @@ return {
         'stylua', -- Used to format Lua code
         'shfmt',
         'prettierd',
+        'markdownlint-cli2',
+        'markdownlint',
       })
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 

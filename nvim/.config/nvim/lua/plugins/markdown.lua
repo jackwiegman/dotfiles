@@ -12,8 +12,8 @@ return { -- Render markdown in the editor
     ---@type render.md.UserConfig
     opts = {
       latex = {
-        converter = 'pdflatex',
-        -- converter = 'ltx2unitxt',
+        -- converter = 'pdflatex',
+        converter = 'ltx2unitxt',
         -- render_modes = { 'n', 'c', 't' },
         -- top_pad = 1,
         -- bottom_pad = 0,
