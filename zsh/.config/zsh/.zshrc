@@ -26,6 +26,7 @@ export LS_COLORS=('di=1;34:ln=01;35:ex=1;30;32:*.tar=01;31:*.tgz=01;31:*.arj=01;
 # source /etc/profile # Source main profile
 export JAVA_HOME="/usr/lib/jvm/default"
 export JDK_HOME=$JAVA_HOME
+# export JAVAFX_HOME="usr/share/java/java-openjfx/"
 path=($JAVA_HOME/bin $path)
 path=(/usr/share/java/java-openjfx/ $path)
 path=("gradle-9.1.0-1/bin" $path)
