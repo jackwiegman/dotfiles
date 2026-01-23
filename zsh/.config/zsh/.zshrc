@@ -43,7 +43,7 @@ path=($path /usr/bin/node)
 ##? Clone a plugin, identify its init file, source it, and add it to your fpath.
 function plugin-load {
   local repo plugdir initfile initfiles=()
-  : ${ZPLUGINDIR:=${ZDOTDIR:-~/.config/zsh}/plugins}
+  : ${ZPLUGINDIR:=${ZDOTDIR:-~/dotfiles/zsh/.config/zsh}/plugins}
   for repo in $@; do
     plugdir=$ZPLUGINDIR/${repo:t}
     initfile=$plugdir/${repo:t}.plugin.zsh
@@ -51,6 +51,7 @@ function plugin-load {
       echo "Cloning $repo..."
       git clone -q --depth 1 --recursive --shallow-submodules \
         git@github.com:$repo $plugdir
+       git submodule add --reference git@github.com:$repo $plugdir
     fi
     if [[ ! -e $initfile ]]; then
       initfiles=($plugdir/*.{plugin.zsh,zsh-theme,zsh,sh}(N))
@@ -63,7 +64,7 @@ function plugin-load {
 }
 
 repos=(
-    # romkatv/powerlevel10k
+    romkatv/powerlevel10k
 
     zsh-users/zsh-autosuggestions
     zsh-users/zsh-syntax-highlighting
@@ -108,8 +109,9 @@ compinit
 # End of lines added by compinstall
 
 # YAZI alias function to change directory on 'q', quit without moving with 'Q'
-# Call with function name 'yz'
+# Call with function name 'y'
 #
+
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     yazi "$@" --cwd-file="$tmp"
