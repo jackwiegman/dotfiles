@@ -13,7 +13,7 @@ return { -- Render markdown in the editor
     opts = {
       latex = {
         -- converter = 'pdflatex',
-        converter = 'ltx2unitxt',
+        -- converter = 'ltx2unitxt',
         -- render_modes = { 'n', 'c', 't' },
         -- top_pad = 1,
         -- bottom_pad = 0,

@@ -334,9 +334,11 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'shfmt',
+        'delve',
         'prettierd',
         'markdownlint-cli2',
         'markdownlint',
+        'marksman',
       })
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 

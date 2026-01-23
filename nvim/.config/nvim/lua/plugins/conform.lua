@@ -41,6 +41,7 @@ return {
         python = { 'black' },
 
         -- markdown = { 'prettierd' },
+        markdown = { 'marksman', 'markdownlint' },
         html = { 'prettierd' },
         css = { 'prettierd' },
 
