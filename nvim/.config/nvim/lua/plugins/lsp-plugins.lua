@@ -334,7 +334,7 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'shfmt',
-        'delve',
+        -- 'delve',
         'prettierd',
         'markdownlint-cli2',
         'markdownlint',
