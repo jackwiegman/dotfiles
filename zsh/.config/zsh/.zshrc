@@ -1,4 +1,5 @@
 fastfetch 2>/dev/null
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -43,7 +44,7 @@ path=($path /usr/bin/node)
 ##? Clone a plugin, identify its init file, source it, and add it to your fpath.
 function plugin-load {
   local repo plugdir initfile initfiles=()
-  : ${ZPLUGINDIR:=${ZDOTDIR:-~/dotfiles/zsh/.config/zsh}/plugins}
+  : ${ZPLUGINDIR:=${ZDOTDIR:-~/.config/zsh}/plugins}
   for repo in $@; do
     plugdir=$ZPLUGINDIR/${repo:t}
     initfile=$plugdir/${repo:t}.plugin.zsh
@@ -64,7 +65,7 @@ function plugin-load {
 }
 
 repos=(
-    romkatv/powerlevel10k
+    # romkatv/powerlevel10k
 
     zsh-users/zsh-autosuggestions
     zsh-users/zsh-syntax-highlighting

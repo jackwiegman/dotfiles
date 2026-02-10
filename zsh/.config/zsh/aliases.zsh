@@ -1,3 +1,4 @@
+# Directories and cd aliases
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
@@ -7,6 +8,7 @@ alias po=popd
 alias pu=pushd
 
 alias 1='cd -'
+alias 1='cd -1'
 alias 2='cd -2'
 alias 3='cd -3'
 alias 4='cd -4'
@@ -15,6 +17,10 @@ alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
+
+# Tree aliases
+alias tree='tree -C'
+alias t='tree -a' # -C already included
 
 
 # alias ls='lsd --color=auto'
@@ -54,13 +60,14 @@ alias g=git
 alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit'
+alias gcm='git commit -m'
 
 alias gst='git status'
-alias gssb='git status -sb'
+alias gsb='git status -sb'
 # alias gsb='git status -sb'
 
 
-alias gb='git branch'
+alias gbr='git branch'
 
 alias gd='git diff'
 # alias gdt='git diff-tree --no-commit-id --name-only -r'
@@ -81,13 +88,14 @@ alias gignored='git ls-files -v | grep "^[[:lower:]]"'
 
 
 
-# alias glg='git log --stat'
-# alias glgg='git log --graph'
-# alias glgga='git log --graph --decorate --all'
-# alias glgm='git log --graph --max-count=10'
-# alias glgp='git log --stat -p'
+alias gl='git log'
+alias gls='git log --stat'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glog='git log --oneline --decorate --graph'
+alias glgm='git log --graph --max-count=10'
+alias glsp='git log --stat -p'
 # alias glo='git log --oneline --decorate'
-# alias glog='git log --oneline --decorate --graph'
 # alias gloga='git log --oneline --decorate --graph --all'
 # alias glol='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
 # alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --all'

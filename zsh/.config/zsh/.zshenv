@@ -23,9 +23,9 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 export HISTFILE="$XDG_CACHE_HOME/.zhistory"
 
-export EDITOR="nvim" # Text based editor
-export VISUAL="nvim" # Full screeen editor
-export PAGER="bat" # idk if this one exists anywhere
+# export EDITOR="nvim" # Text based editor
+# export VISUAL="nvim" # Full screeen editor
+# export PAGER="bat" # idk if this one exists anywhere
 
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
 
