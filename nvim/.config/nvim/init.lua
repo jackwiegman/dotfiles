@@ -243,7 +243,7 @@ require('lazy').setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { 'gruvbox' } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  -- checker = { enabled = true },
 
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
