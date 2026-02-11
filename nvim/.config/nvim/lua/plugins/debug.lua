@@ -21,14 +21,14 @@ return {
     keys = {
       -- Basic debugging keymaps, feel free to change to your liking!
       {
-        '<F1>',
+        '<F5>',
         function()
           require('dap').continue()
         end,
         desc = 'Debug: Start/Continue',
       },
       {
-        '<F2>',
+        '<F1>',
         function()
           require('dap').step_into()
         end,
@@ -42,12 +42,17 @@ return {
         desc = 'Debug: Step Over',
       },
       {
-        '<F4>',
+        '<F2>',
         function()
           require('dap').step_out()
         end,
         desc = 'Debug: Step Out',
       },
+      -- {
+      --   '<F5>',
+      --   function()
+      --     require('dap').
+      -- }
       {
         '<leader>b',
         function()
@@ -153,7 +158,7 @@ return {
 
       dap.adapters.gdb = {
         type = 'executable',
-        command = 'gdb',
+        command = '/usr/bin/gdb',
         args = { '--interpreter=dap', '--eval-command', 'set print pretty on' },
       }
       -- dap.adapters.cppdbg = {
@@ -161,20 +166,46 @@ return {
       --     type = 'executable',
       --     command = os.getenv 'HOME' .. '/apps/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
       -- }
+
+      local execDir = vim.fn.getcwd() .. '/out/linux/build/debug'
+      local execPath = execDir .. '/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t') -- add just the name of the directory (executable name)
       dap.configurations.c = {
         {
-          name = 'Debug executable',
+          name = 'Linux Debug',
           type = 'gdb',
           request = 'launch',
-          program = function()
-            return vim.fn.input(
-              'Path to executable: ',
-              vim.fn.getcwd() .. '/out/linux/build/debug',
-              'file'
-            )
-          end,
-          cwd = '${wordspaceFolder}',
-          stopAtBeginningOfMainSubprogram = true,
+
+          program = execPath,
+          args = {},
+          -- program = function()
+          -- return vim.fn.getcwd() .. 'out/linu'
+          --
+
+          -- cwd = dap.configurations.c.program,
+          cwd = execDir,
+          -- stopAtBeginningOfMainSubprogram = false,
+          stopAtEntry = false,
+          -- environment = {}, -- pass env vars if needed
+          -- terminalOptions = {
+          --   kind = 'integrated', -- or external
+          -- },
+          runInTerminal = true,
+          -- MIMode = 'gdb', -- ensure right debugger mode
+          setupCommands = {
+            {
+              text = 'directory ' .. vim.fn.getcwd() .. '/SourceFiles',
+              description = 'Add project source path',
+              ignoreFailures = false,
+            },
+            {
+              text = 'directory '
+                .. vim.fn.getcwd()
+                .. '/out/linux/build/debug/'
+                .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t'), -- add just the name of the directory (executable name)
+              description = 'Add project source path',
+              ignoreFailures = false,
+            },
+          },
         },
       }
 
