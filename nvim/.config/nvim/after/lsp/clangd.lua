@@ -15,4 +15,14 @@ return {
   init_options = {
     fallbackFlags = { fallback },
   },
+  root_markers = {
+    '.clangd',
+    '.clang-tidy',
+    'compile_commands.json',
+    '.cache',
+    'compile_flags.txt',
+    'configure.ac',
+    '.clang-format',
+    '.git',
+  },
 }
