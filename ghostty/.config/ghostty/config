@@ -60,5 +60,7 @@ minimum-contrast = 1.1
 confirm-close-surface = false
 
 window-inherit-working-directory = true
+split-inherit-working-directory = true
+tab-inherit-working-directory = true
 
 # input = "clear\nfastfetch\n"

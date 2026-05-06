@@ -38,6 +38,8 @@ source $ZDOTDIR/aliases.zsh
 # path=(~/.local/bin $path)
 path=($path /usr/bin/node)
 
+# VCPKG Env vars
+# export VCPKG_ROOT = 
 
 
 # Plugin Mangager

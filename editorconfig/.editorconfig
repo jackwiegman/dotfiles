@@ -17,6 +17,12 @@ indent_size = 4
 
 max_line_length = 100
 
+[*.py]
+max_line_length = 88
+
+[*.md]
+indent_size = 2
+
 # [*.{java,c,cpp}]
 # # Taken by neovim
 # max_line_length = 80
