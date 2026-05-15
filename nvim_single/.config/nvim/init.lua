@@ -283,6 +283,8 @@ require('lazy').setup({
     --- todo comments
     --- colorscheme
 
+    ---@module 'lazy'
+    ---@type LazySpec
     spec = {
         -- { 'NMAC427/guess-indent.nvim', opts = {} },
         { -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -903,8 +905,6 @@ require('lazy').setup({
 
         -- Linting
 
-        ---@module 'lazy'
-        ---@type LazySpec
         {
             'mfussenegger/nvim-lint',
             event = { 'BufReadPre', 'BufNewFile' },
@@ -1018,150 +1018,150 @@ require('lazy').setup({
                 --  Check out: https://github.com/nvim-mini/mini.nvim
             end,
         },
-        {
+        -- {
+        --     'nvim-treesitter/nvim-treesitter',
+        --     lazy = false,
+        --     build = ':TSUpdate',
+        --     opts = {
+        --         ensure_installed = {
+        --             'bash',
+        --             'c',
+        --             'cpp',
+        --             'markdown',
+        --             'markdown_inline',
+        --         },
+        --     },
+        --
+        --     config = function(opts)
+        --         -- require('nvim-treesitter').add({ opts.ensure_installed })
+        --         vim.api.nvim_create_autocmd('FileType', {
+        --             pattern = opts.ensure_installed,
+        --             callback = function()
+        --                 vim.treesitter.start()
+        --             end,
+        --         })
+        --
+        --         require('nvim-treesitter.configs').setup({
+        --             -- A directory to install the parsers into.
+        --             -- If this is excluded or nil parsers are installed
+        --             -- to either the package dir, or the "site" dir.
+        --             -- If a custom path is used (not nil) it must be added to the runtimepath.
+        --             parser_install_dir = '/home/jack/.local/share/nvim/parsers',
+        --
+        --             -- A list of parser names, or "all"
+        --             ensure_installed = opts.ensure_installed,
+        --
+        --             -- Install parsers synchronously (only applied to `ensure_installed`)
+        --             sync_install = false,
+        --
+        --             -- Automatically install missing parsers when entering buffer
+        --             auto_install = false,
+        --
+        --             -- List of parsers to ignore installing (for "all")
+        --             ignore_install = { 'javascript' },
+        --
+        --             highlight = {
+        --                 -- `false` will disable the whole extension
+        --                 enable = true,
+        --
+        --                 -- list of language that will be disabled
+        --                 -- disable = { 'c', 'rust' },
+        --
+        --                 -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+        --                 -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        --                 -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        --                 -- Instead of true it can also be a list of languages
+        --                 additional_vim_regex_highlighting = false,
+        --             },
+        --         })
+        --         vim.opt.runtimepath:append('/home/jack/.local/share/nvim/parsers')
+        --     end,
+        -- },
+        { -- Highlight, edit, and navigate code
             'nvim-treesitter/nvim-treesitter',
             lazy = false,
             build = ':TSUpdate',
+            main = 'nvim-treesitter.configs',
             opts = {
                 ensure_installed = {
                     'bash',
                     'c',
+                    'cmake',
                     'cpp',
+                    'css',
+                    'csv',
+                    'diff',
+                    'doxygen',
+                    'editorconfig',
+                    'git_config',
+                    'gitcommit',
+                    'gitignore',
+                    'gpg',
+                    'html',
+                    'hyprlang',
+                    'ini',
+                    'java',
+                    'javascript',
+                    'javadoc',
+                    'jq',
+                    'jsdoc',
+                    'json',
+                    'json5',
+                    'jsonc',
+                    'latex',
+                    'lua',
+                    'luadoc',
+                    'make',
                     'markdown',
                     'markdown_inline',
+                    'passwd',
+                    'powershell',
+                    'printf',
+                    'pymanifest',
+                    'python',
+                    'query',
+                    'r',
+                    'regex',
+                    'requirements', -- pip requirement files
+                    'rust',
+                    'scheme',
+                    'sql',
+                    'ssh_config',
+                    'sway',
+                    'toml',
+                    'typescript',
+                    'udev',
+                    'vim',
+                    'vimdoc',
+                    'xml',
+                    'yaml',
                 },
+                -- ensure_installed = {
+                --
+                --     'bash',
+                --     'c',
+                --     'cpp',
+                --     'diff',
+                --     'html',
+                --     'lua',
+                --     'luadoc',
+                --     'markdown',
+                --     'markdown_inline',
+                --     'query',
+                --     'vim',
+                --     'vimdoc',
+                --     -- Add more as needed
+                -- },
+                auto_install = true,
+                highlight = { enable = true },
+                indent = { enable = true },
             },
-
-            config = function(opts)
-                -- require('nvim-treesitter').add({ opts.ensure_installed })
-                vim.api.nvim_create_autocmd('FileType', {
-                    pattern = { opts.ensure_installed },
-                    callback = function()
-                        vim.treesitter.start()
-                    end,
-                })
-
-                require('nvim-treesitter.configs').setup({
-                    -- A directory to install the parsers into.
-                    -- If this is excluded or nil parsers are installed
-                    -- to either the package dir, or the "site" dir.
-                    -- If a custom path is used (not nil) it must be added to the runtimepath.
-                    parser_install_dir = '/home/jack/.local/share/nvim/parsers',
-
-                    -- A list of parser names, or "all"
-                    ensure_installed = opts.ensure_installed,
-
-                    -- Install parsers synchronously (only applied to `ensure_installed`)
-                    sync_install = false,
-
-                    -- Automatically install missing parsers when entering buffer
-                    auto_install = false,
-
-                    -- List of parsers to ignore installing (for "all")
-                    ignore_install = { 'javascript' },
-
-                    highlight = {
-                        -- `false` will disable the whole extension
-                        enable = true,
-
-                        -- list of language that will be disabled
-                        -- disable = { 'c', 'rust' },
-
-                        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-                        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-                        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-                        -- Instead of true it can also be a list of languages
-                        additional_vim_regex_highlighting = false,
-                    },
-                })
-                vim.opt.runtimepath:append('/home/jack/.local/share/nvim/parsers')
-            end,
         },
         -- { -- Highlight, edit, and navigate code
         --     'nvim-treesitter/nvim-treesitter',
         --     lazy = false,
         --     build = ':TSUpdate',
-        --     main = 'nvim-treesitter.configs',
-        --     opts = {
-        --         ensure_installed = {
-        --             'bash',
-        --             'c',
-        --             'cmake',
-        --             'cpp',
-        --             'css',
-        --             'csv',
-        --             'diff',
-        --             'doxygen',
-        --             'editorconfig',
-        --             'git_config',
-        --             'gitcommit',
-        --             'gitignore',
-        --             'gpg',
-        --             'html',
-        --             'hyprlang',
-        --             'ini',
-        --             'java',
-        --             'javascript',
-        --             'javadoc',
-        --             'jq',
-        --             'jsdoc',
-        --             'json',
-        --             'json5',
-        --             'jsonc',
-        --             'latex',
-        --             'lua',
-        --             'luadoc',
-        --             'make',
-        --             'markdown',
-        --             'markdown_inline',
-        --             'passwd',
-        --             'powershell',
-        --             'printf',
-        --             'pymanifest',
-        --             'python',
-        --             'query',
-        --             'r',
-        --             'regex',
-        --             'requirements', -- pip requirement files
-        --             'rust',
-        --             'scheme',
-        --             'sql',
-        --             'ssh_config',
-        --             'sway',
-        --             'toml',
-        --             'typescript',
-        --             'udev',
-        --             'vim',
-        --             'vimdoc',
-        --             'xml',
-        --             'yaml',
-        --         },
-        --         -- ensure_installed = {
-        --         --
-        --         --     'bash',
-        --         --     'c',
-        --         --     'cpp',
-        --         --     'diff',
-        --         --     'html',
-        --         --     'lua',
-        --         --     'luadoc',
-        --         --     'markdown',
-        --         --     'markdown_inline',
-        --         --     'query',
-        --         --     'vim',
-        --         --     'vimdoc',
-        --         --     -- Add more as needed
-        --         -- },
-        --         auto_install = true,
-        --         highlight = { enable = true },
-        --         indent = { enable = true },
-        --     },
-        -- },
-        -- { -- Highlight, edit, and navigate code
-        --     'nvim-treesitter/nvim-treesitter',
-        --     lazy = false,
-        --     build = ':TSUpdate',
-        --     branch = 'main',
+        --     -- branch = 'main',
         --     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
         --     config = function()
         --         -- ensure basic parser are installed
@@ -1306,7 +1306,7 @@ require('lazy').setup({
                 'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
                 'MunifTanjim/nui.nvim',
             },
-            lazy = false,
+            lazy = true,
             keys = {
                 { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
             },
